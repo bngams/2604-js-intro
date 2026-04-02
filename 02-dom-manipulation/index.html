@@ -46,6 +46,16 @@
    <script>
       console.log("JavaScript !");
 
+      /**
+       * Exercice : colorer les éléments de la page en fonction de leur classe
+       * - vert => green
+       * - rouge => red
+       * - orange => orange
+       **/
+
+      /**
+       * Demo simple pour colorer
+       **/
       function colorer() {
         // SYNTAXE JS
         const elementsVert = document.querySelectorAll(".vert"); // class=vert
@@ -65,6 +75,15 @@
         $(".orange").css("color", "orange");
       }
 
+      /**
+       * Demo plus avancée pour colorer avec une logique plus "générique" 
+       * (sans faire du copier-coller pour chaque classe)
+       * 
+       * Rappels sur les 3 types de boucles pour itérer :
+       * 1. avec une boucle for...of
+       * 2. avec une boucle for classique
+       * 3. avec une méthode de tableau (forEach)
+       */
       function colorerAvancee() {
         const classesCouleurs = ["vert", "rouge", "orange"];
 
@@ -78,6 +97,8 @@
 
         classesCouleurs.forEach(classe => {
           let valeurCouleur;
+          // Remarque: syntaxe if...else if...else pas très élégante, mais c'est pour l'exemple
+          // pour éviter d'avoir à faire du copier-coller pour chaque classe
           if (classe === "vert") {
             valeurCouleur = "green";
           } else if (classe === "rouge") {
@@ -89,6 +110,10 @@
         });
       }
 
+      /**
+       * Version encore plus avancée pour éviter les conditions if...else if...else
+       * et faire du copier-coller pour chaque classe
+       **/
       function colorerAvancee2() {   
         const classesCouleursJSON = [
             { classe: "vert", couleur: "green" },
@@ -104,6 +129,46 @@
       function appliquerCouleur(classe, couleur) {
         document.querySelectorAll(`.${classe}`).forEach(element => {
           element.style.color = couleur;
+        });
+      }
+
+      // Methode simple => en appliquant des styles
+      function mettreTitres() {
+        // sélectionner les titre1 et appliquer une taille de police plus grande
+        document.querySelectorAll(".titre1").forEach(element => {
+            // pour voir les éléments style
+            // - voir la doc => https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+            // - en mode "debug" => console.log(element.style);
+            element.style.fontSize = "32px";
+            element.style.fontWeight = "bold";
+            element.style.display = "block"; // pour que les titres soient sur une ligne à part
+            element.style.marginTop = "20px"; // pour ajouter un peu d'espace au dessus du titre
+            element.style.marginBottom = "10px"; // pour ajouter un peu d'espace en dessous du titre
+        });
+      }
+
+
+      function mettreTitresAvancee() {
+        // sélectionner les titre1 et appliquer une taille de police plus grande
+        document.querySelectorAll(".titre1").forEach(element => {
+            const h1 = document.createElement("h1"); // créer une balise h1
+            h1.textContent = element.textContent; // copier le texte de l'élément original dans le h1
+            element.replaceWith(h1); // remplacer la balise originale par le h1
+        });
+      }
+
+      // selectionnner ts les titres et les remplacer par des titres h1 / h2 en fonction
+      function mettreTitresAvancee2() {
+        // sélectionner les titre1 et appliquer une taille de police plus grande
+        document.querySelectorAll(".titre1, .titre2").forEach(element => {
+            console.log(element);
+            let baliseACreer = "h2"; 
+            if(element.className == "titre1") {
+                baliseACreer = "h1";
+            }
+            const titre = document.createElement(baliseACreer); // créer une balise titre
+            titre.textContent = element.textContent; // copier le texte de l'élément original dans le h1
+            element.replaceWith(titre); // remplacer la balise originale par le titre
         });
       }
    </script>
