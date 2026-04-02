@@ -20,7 +20,7 @@
 <body>
   <p id="contenu">
     La couleur <span class="vert">verte</span> est jolie, <span class="titre2">surtout en titre2</span>,
-    <a href="#">ou en lien href</a>. <span class="rouge">Le rouge</span> est pas mal aussi
+    <a href="">ou en lien href</a>. <span class="rouge">Le rouge</span> est pas mal aussi
     <span class="orange">mais le orange me plaît bien</span> surtout, <span class="titre2">en titre2</span>.
     Vous êtes d'accord avec moi ? <span class="gras">On peut aussi écrire en gras</span>
     et même en <span class="titre1">gros comme dans ce titre1</span>. L'écriture
@@ -169,6 +169,14 @@
             const titre = document.createElement(baliseACreer); // créer une balise titre
             titre.textContent = element.textContent; // copier le texte de l'élément original dans le h1
             element.replaceWith(titre); // remplacer la balise originale par le titre
+        });
+      }
+
+      function liensEnBoutons() {
+        document.querySelectorAll("a").forEach(element => {
+            const button = document.createElement("button");
+            button.textContent = element.textContent; // copier le texte de l'élément original dans le bouton
+            element.replaceWith(button); // remplacer le lien par le bouton
         });
       }
    </script>
