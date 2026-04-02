@@ -1,0 +1,12 @@
+.gras {
+    font-weight: bold;
+}
+.italique {
+    font-style: italic;
+}
+.souligne {
+    text-decoration: underline;
+}
+.barre {
+    text-decoration: line-through;
+}

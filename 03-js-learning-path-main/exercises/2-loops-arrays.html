@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2: Loops and Arrays</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8">Exercise 2: Loops and Arrays</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Array Operations</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-2">Enter numbers (comma-separated):</label>
+                    <input type="text" id="numbers" class="w-full p-2 border rounded" placeholder="1,2,3,4,5">
+                </div>
+                <div class="space-x-2">
+                    <button onclick="calculateSum()" class="bg-blue-500 text-white px-4 py-2 rounded">Calculate Sum</button>
+                    <button onclick="findMax()" class="bg-blue-500 text-white px-4 py-2 rounded">Find Maximum</button>
+                    <button onclick="filterEven()" class="bg-blue-500 text-white px-4 py-2 rounded">Filter Even Numbers</button>
+                </div>
+                <div>
+                    <p class="text-xl">Result: <span id="result">-</span></p>
+                </div>
+            </div>
+        </div>
+
+        <a href="../index.html" class="text-blue-500 hover:underline">&larr; Back to menu</a>
+    </div>
+
+    <script>
+        // TODO: Complete these functions
+        function calculateSum() {
+            // Get user input
+            const numbersInput = document.querySelector('#numbers').value;
+
+            // 1,2,3,4,5
+            const numbers = numbersInput.split(',');
+            // calculate the sum using a loop
+            let sum = 0;
+            numbers.forEach(num => {
+                sum += parseInt(num);
+            });
+            
+            // Insert the result into the DOM
+            document.querySelector('#result').textContent = sum;
+        }
+
+        function calculateSumWithReduce() {
+            const numbersInput = document.querySelector('#numbers').value;
+            const numbers = numbersInput.split(',').map(num => parseInt(num));
+            const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+            document.querySelector('#result').textContent = sum;
+        }
+
+        function calculateSumWithReduceOneLine() {
+            const sum = document.querySelector('#numbers').value.split(',').map(num => parseInt(num)).reduce((acc, curr) => acc + curr, 0);
+            document.querySelector('#result').textContent = sum;
+        }
+
+        function findMax() {
+            const numbersInput = document.querySelector('#numbers').value;
+
+            const numbers = numbersInput.split(',');
+
+            // with loop
+            // let maxFromLoop = 0;
+            // for (let i = 0; i < numbers.length; i++) {
+            //     const num = parseInt(numbers[i]);
+            //     if (num > maxFromLoop) {
+            //         maxFromLoop = num;
+            //     }
+            // }
+            
+            // with max
+            const max = Math.max(...numbers);
+
+            document.querySelector('#result').textContent = max;
+            
+        }
+
+        function findMaxOneLine() {
+            const max = Math.max(...document.querySelector('#numbers').value.split(',').map(num => parseInt(num)));
+            document.querySelector('#result').textContent = max;
+        }
+
+        function filterEven() {
+            const numbersInput = document.querySelector('#numbers').value;
+
+            const numbers = numbersInput.split(',');
+
+            // stocker les nombres pairs dans un nouveau tableau
+            const evenNumbers = [];
+
+            // stocker les nombres pairs dans une chaine de caractères
+            // let evenNumbersAsString = "";
+
+            // with loop
+            numbers.forEach(num => {
+                // convert to integer
+                num = parseInt(num);
+
+                // isInteger function
+                if ( Number.isInteger(num / 2) ) {
+                    evenNumbers.push(num)
+                }
+
+                // % comparison (modulo)
+                // if (num % 2 === 0) {
+                //     evenNumbersAsString += num + ', ';
+                // }
+            });
+
+            document.querySelector('#result').textContent = evenNumbers.join(', ');
+
+        }
+        
+        function filterEvenOneLine() {
+            const evenNumbers = document.querySelector('#numbers').value.split(',').map(num => parseInt(num)).filter(num => num % 2 === 0);
+            document.querySelector('#result').textContent = evenNumbers.join(', ');
+        }
+    </script>
+</body>
+</html>

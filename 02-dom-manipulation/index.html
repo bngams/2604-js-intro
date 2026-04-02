@@ -2,20 +2,7 @@
 <html>
 <head>
   <title>Exercice sur les sélecteurs en JavaScript</title>
-  <style>
-    .gras {
-      font-weight: bold;
-    }
-    .italique {
-      font-style: italic;
-    }
-    .souligne {
-      text-decoration: underline;
-    }
-    .barre {
-      text-decoration: line-through;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <p id="contenu">
@@ -28,7 +15,7 @@
     est aussi possible en HTML. <span class="italique">L'italique</span> est très joli comme style.
   </p>
   
-  <button onclick="colorer()">Colorer le texte</button> <br/>
+  <button id="btn-colorer">Colorer le texte</button> <br/>
   <button onclick="mettreTitres()">Mettre des titres</button> <br/>
   <button onclick="liensEnBoutons()">Transformer les liens en boutons</button> <br/>
   <button onclick="dupliquerTexte()">Dupliquer le texte</button> <br/>
@@ -43,8 +30,16 @@
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+   <script src="jquery.min.js"></script>
+   <script src="myscript.js"></script>
+
    <script>
       console.log("JavaScript !");
+
+      document.querySelector("#btn-colorer")
+        .addEventListener("click", () => {
+          colorer();  
+        })
 
       /**
        * Exercice : colorer les éléments de la page en fonction de leur classe
@@ -65,7 +60,7 @@
           element.style.color = "green";
         });
 
-        // en une ligne
+        // SYNTAXE JS 
         document.querySelectorAll(".vert").forEach(element => {
           element.style.color = "green";
         });
@@ -178,6 +173,13 @@
             button.textContent = element.textContent; // copier le texte de l'élément original dans le bouton
             element.replaceWith(button); // remplacer le lien par le bouton
         });
+      }
+
+      function dupliquerTexte() {
+        const contenu = document.querySelector("#contenu"); // selectionner par son id
+        // contenu.innerHTML += contenu.innerHTML; // dupliquer le texte en ajoutant le texte original à la fin du texte déjà présent
+        const clone = contenu.cloneNode(true);
+        contenu.after(clone); // ajouter le clone après le contenu original
       }
    </script>
 
