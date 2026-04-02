@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, World!!!</h1>
+    <p>Bienvenue dans le monde de JavaScript</p>
+
+    <button onclick="loadContent()">Charger le contenu</button>
+
+    <!-- Non obligatoire de préciser le type désormais -->
+    <!-- <script  type="text/javascript"></script> -->
+    
+    <script>
+        console.log("Hello from JavaScript!");
+
+        function loadContent() {
+            const myTitle = document.querySelector('h1');
+            myTitle.style.color = 'blue';
+            myTitle.textContent = 'Welcome';
+            
+            // Créer une variable qui contient une référence à l'élément p
+            const p1 = document.querySelector('p');
+            p1.innerHTML = p1.innerHTML + '<br/> Nouveau contenu';
+
+            // Créer une variable qui référence le bouton
+            document.querySelector('button').style.display = 'none';
+            // ou
+            const btn = document.querySelector('button');
+            if(btn && btn.style.display !== 'none') {
+                btn.style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- <script src="app.js"></script> -->
+</body>
+</html>
