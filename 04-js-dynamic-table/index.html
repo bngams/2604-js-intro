@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajouter une Ligne au Tableau</title> <!-- Pas de <link> CSS ici : le CSS est importé dans main.js -->
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ajouter une ligne au tableau</h1>
+    <form id="add-row-form" class="inline-form"> <label for="firstname">Prénom :</label> <input type="text"
+        id="firstname" placeholder="John" required /> <label for="lastname">Nom :</label> <input type="text"
+        id="lastname" placeholder="Doe" required /> <label for="email">Email :</label> <input type="email" id="email"
+        placeholder="example@mail.com" required /> <button type="button" id="add-row">Ajouter</button> </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody><!-- Les lignes apparaîtront ici --></tbody>
+    </table>
+  </div> <!-- ⚠️ Vite : type="module" obligatoire -->
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
