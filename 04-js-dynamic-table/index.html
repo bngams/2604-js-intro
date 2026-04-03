@@ -13,7 +13,8 @@
     <form id="add-row-form" class="inline-form"> <label for="firstname">Prénom :</label> <input type="text"
         id="firstname" placeholder="John" required /> <label for="lastname">Nom :</label> <input type="text"
         id="lastname" placeholder="Doe" required /> <label for="email">Email :</label> <input type="email" id="email"
-        placeholder="example@mail.com" required /> <button type="button" id="add-row">Ajouter</button> </form>
+        placeholder="example@mail.com" required />
+        <button type="button" id="add-row">Ajouter</button> </form>
     <table>
       <thead>
         <tr>
@@ -24,8 +25,10 @@
       </thead>
       <tbody><!-- Les lignes apparaîtront ici --></tbody>
     </table>
+    <canvas id="acquisitions"></canvas>
   </div> <!-- ⚠️ Vite : type="module" obligatoire -->
   <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/chart.js"></script>
 </body>
 
 </html>
