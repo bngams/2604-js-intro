@@ -57,7 +57,9 @@
         }
 
         function calculateSumWithReduceOneLine() {
-            const sum = document.querySelector('#numbers').value.split(',').map(num => parseInt(num)).reduce((acc, curr) => acc + curr, 0);
+            const sum = document.querySelector('#numbers').value.split(',')
+                    .map(num => parseInt(num))
+                    .reduce((acc, curr) => acc + curr, 0);
             document.querySelector('#result').textContent = sum;
         }
 
@@ -119,7 +121,9 @@
         }
         
         function filterEvenOneLine() {
-            const evenNumbers = document.querySelector('#numbers').value.split(',').map(num => parseInt(num)).filter(num => num % 2 === 0);
+            const evenNumbers = document.querySelector('#numbers').value.split(',')
+                .map(num => parseInt(num))
+                .filter(num => num % 2 === 0);
             document.querySelector('#result').textContent = evenNumbers.join(', ');
         }
     </script>

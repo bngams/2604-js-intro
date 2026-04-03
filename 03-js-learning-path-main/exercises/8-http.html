@@ -12,7 +12,7 @@
         
         <div class="bg-white p-6 rounded-lg shadow-md mb-8">
             <h2 class="text-2xl font-semibold mb-4">Products</h2>
-            <div id="products-containter" class="space-y-4 flex flex-row flex-wrap gap-4">
+            <div id="products-container" class="space-y-4 flex flex-row flex-wrap gap-4">
                 Loading products...
                 <!-- <product-card name="Laptop Rpi mini" price="19.99" image="https://placehold.co/150"></product-card> -->
             </div>
@@ -84,19 +84,43 @@
         customElements.define('product-card', ProductCard);
 
         async function fetchProducts() {
-            // TODO: Fetch data from https://dummyjson.com/products?limit=5
-            
-            // const response = ... (syntaxe await)
-            
+            // TODO: Fetch data  from https://dummyjson.com/products?limit=5
+            const url = 'https://dummyjson.com/products?limit=5';
+            const response = await fetch(url);
+
             if(!response.ok) {
                 console.error("Erreur lors de la récupération des données");
             }
+            
             // TODO: get data from response => parse response json (/!\ async)
-            // const data = ...
+            const data = await response.json();
+
+            console.log(data);
+            // data is 
+            // { 
+            //  products: [...], 
+            //  total: 100, 
+            //  skip: 0, 
+            //  limit: 5 
+            // }
+            console.log(data.total);
+            console.log(data.skip);
+            console.log(data.products);
 
             // TODO : Parcourir les données récupérées et ajouter des éléments <product-card> dans le DOM
             // target the products container div
             // append new product-card elements to it
+
+            document.querySelector('#products-container').innerHTML = '';
+
+            data.products.forEach((product) => {
+                const productCard = new ProductCard();
+                productCard.setAttribute('name', product.title);
+                productCard.setAttribute('price', product.price);
+                productCard.setAttribute('image', product.thumbnail);
+                document.querySelector('#products-container').append(productCard);
+            })
+
 
         }
         
@@ -105,4 +129,4 @@
 
     </script>
 </body>
-</html>
+</html>)
